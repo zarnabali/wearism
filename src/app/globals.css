@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  /* Wearism Brand Colors */
+  --wearism-orange: #FF6B35;
+  --wearism-orange-dark: #E5582A;
+  --wearism-orange-light: #FF8A5C;
+
+  /* Light Theme */
+  --background-light: #FAFAFA;
+  --foreground-light: #171717;
+  --surface-light: #FFFFFF;
+  --border-light: #E5E5E5;
+
+  /* Dark Theme */
+  --background-dark: #0A0A0A;
+  --foreground-dark: #EDEDED;
+  --surface-dark: #1A1A1A;
+  --border-dark: #2A2A2A;
+
+  /* Default to light */
+  --background: var(--background-light);
+  --foreground: var(--foreground-light);
+  --surface: var(--surface-light);
+  --border: var(--border-light);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-wearism: var(--wearism-orange);
+  --color-wearism-dark: var(--wearism-orange-dark);
+  --color-wearism-light: var(--wearism-orange-light);
+  --font-cabinet: var(--font-cabinet);
+  --font-switzer: var(--font-switzer);
+  --font-hauora: var(--font-hauora);
+  --font-oswald: var(--font-oswald);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-hauora), system-ui, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section backgrounds */
+.section-light {
+  background: var(--background-light);
+  color: var(--foreground-light);
+}
+
+.section-dark {
+  background: var(--background-dark);
+  color: var(--foreground-dark);
+}
