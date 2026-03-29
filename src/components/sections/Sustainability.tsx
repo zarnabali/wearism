@@ -1,122 +1,141 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Sustainability() {
     return (
-        <section id="sustainability" className="bg-gradient-to-br from-green-50 to-emerald-50 py-32 px-6">
+        <section id="sustainability" className="relative bg-[#FBFDFA] py-16 md:py-24 px-6 overflow-hidden">
+            {/* Background Glows */}
+            <div className="absolute top-1/2 -left-20 w-[500px] h-[500px] bg-emerald-100/20 rounded-full blur-[120px] -z-10" />
+            <div className="absolute bottom-1/2 -right-20 w-[500px] h-[500px] bg-mint-100/20 rounded-full blur-[120px] -z-10" />
+
             <div className="max-w-7xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-20">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-sm border border-green-100 rounded-full text-green-700 font-hauora text-sm font-medium mb-6">
-                        <span>🌍</span> Sustainable Future
-                    </div>
-                    <h2 className="font-hauora font-light text-5xl lg:text-6xl text-gray-900 leading-tight mb-6">
-                        Fashion without the footprint
-                    </h2>
-                    <p className="font-hauora font-light text-xl text-gray-600 max-w-3xl mx-auto">
-                        <span className="font-medium text-gray-900">10% of global carbon emissions</span> come from fashion manufacturing.
-                        We're changing that by keeping clothes in circulation longer.
-                    </p>
-                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                    {/* Left: How Swapping Works */}
-                    <div className="space-y-12">
-                        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-green-100/50">
-                            <h3 className="font-hauora font-medium text-2xl text-gray-900 mb-6">The Secure Swap Process</h3>
-                            <ul className="space-y-8 relative">
-                                {/* Vertical line */}
-                                <div className="absolute left-[19px] top-4 bottom-4 w-0.5 bg-green-100"></div>
-
-                                <li className="flex gap-6 relative z-10">
-                                    <div className="flex-shrink-0 w-10 h-10 bg-white border-2 border-green-200 rounded-full flex items-center justify-center font-bold text-green-700">1</div>
-                                    <div>
-                                        <h4 className="font-hauora font-medium text-lg text-gray-900">Digital Closet Match</h4>
-                                        <p className="font-hauora font-light text-gray-600 text-sm">Our AI finds friends with items that fit your style and size.</p>
-                                    </div>
-                                </li>
-                                <li className="flex gap-6 relative z-10">
-                                    <div className="flex-shrink-0 w-10 h-10 bg-white border-2 border-green-200 rounded-full flex items-center justify-center font-bold text-green-700">2</div>
-                                    <div>
-                                        <h4 className="font-hauora font-medium text-lg text-gray-900">Request & Approval</h4>
-                                        <p className="font-hauora font-light text-gray-600 text-sm">Send a swap request. Both parties agree on terms (temporary or permanent).</p>
-                                    </div>
-                                </li>
-                                <li className="flex gap-6 relative z-10">
-                                    <div className="flex-shrink-0 w-10 h-10 bg-white border-2 border-green-200 rounded-full flex items-center justify-center font-bold text-green-700">3</div>
-                                    <div>
-                                        <h4 className="font-hauora font-medium text-lg text-gray-900">Verification & Exchange</h4>
-                                        <p className="font-hauora font-light text-gray-600 text-sm">Secure verification ensures you get exactly what you swapped for. No fraud, just fashion.</p>
-                                    </div>
-                                </li>
-                            </ul>
+                    {/* Left Side: Context & Stats */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="space-y-8"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-100/50 rounded-full text-emerald-700 font-hauora text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            Social Fashion Hub
                         </div>
-                    </div>
 
-                    {/* Right: Impact Visual - Outgoing Request */}
+                        <h2 className="font-hauora font-light text-5xl lg:text-7xl text-[#1A1A1A] leading-[1.1] tracking-tighter">
+                            Own Less, <br />
+                            <span className="font-medium text-emerald-600">Style More.</span>
+                        </h2>
+
+                        <p className="font-hauora font-light text-lg text-[#1A1A1A]/60 leading-relaxed max-w-xl text-balance">
+                            Every second, a garbage truck of textiles is landfilled. We’re changing that by
+                            turning your social circle into a private, sustainable boutique. Swap securely, save the planet.
+                        </p>
+
+                        {/* Bento Stats Section */}
+                        <div className="grid grid-cols-2 gap-4 pt-4">
+                            <div className="bg-white p-5 rounded-3xl border border-emerald-100/50 shadow-sm flex flex-col justify-between h-32 hover:border-emerald-200 transition-colors">
+                                <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-[#1A1A1A]/30">CO2 Diverted</span>
+                                <div className="text-3xl font-light text-[#1A1A1A]">1.2<span className="text-xl ml-1 text-emerald-600 font-medium">T</span></div>
+                            </div>
+                            <div className="bg-white p-5 rounded-3xl border border-emerald-100/50 shadow-sm flex flex-col justify-between h-32 hover:border-emerald-200 transition-colors">
+                                <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-[#1A1A1A]/30">Water Saved</span>
+                                <div className="text-3xl font-light text-[#1A1A1A]">840<span className="text-xl ml-1 text-emerald-600 font-medium">K</span></div>
+                            </div>
+                            <div className="col-span-2 bg-[#1A1A1A] p-5 rounded-3xl shadow-xl flex items-center justify-between h-20 group cursor-default">
+                                <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-white/40">Circular Economy Rate</span>
+                                <div className="text-3xl font-light text-white mr-4">4.2<span className="text-xl ml-1 text-emerald-400 font-medium">x</span></div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Right Side: Enhanced Swap Request Card */}
                     <div className="relative">
-                        <div className="bg-white rounded-3xl p-8 shadow-xl border border-green-100 relative z-10 w-full max-w-md mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                            className="bg-white rounded-[40px] p-6 md:p-8 shadow-[0_40px_100px_-20px_rgba(16,185,129,0.2)] border border-[#F7FCFB] relative z-10 w-full max-w-[440px] mx-auto overflow-hidden group"
+                        >
+                            {/* Glass background effect */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/40 via-white/40 to-white/40 backdrop-blur-3xl -z-10" />
+
                             {/* Header */}
-                            <div className="flex items-center justify-between pb-6 border-b border-gray-100 mb-6">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm relative">
-                                        <Image src="/images/kian_mccaffrey.jpeg" alt="Friend" fill className="object-cover" />
+                            <div className="flex items-center justify-between pb-6 border-b border-emerald-100/30 mb-8">
+                                <div className="flex items-center gap-3 md:gap-4">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-white shadow-md relative flex-shrink-0">
+                                        <Image src="/images/kian_mccaffrey.jpeg" alt="Alex" fill className="object-cover" />
                                     </div>
-                                    <div>
-                                        <h4 className="font-hauora font-bold text-gray-900 leading-tight">Alex M.</h4>
-                                        <p className="text-xs text-gray-500 font-hauora">Active 2m ago</p>
-                                    </div>
-                                </div>
-                                <span className="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">98% Style Match</span>
-                            </div>
-
-                            {/* Item Comparison */}
-                            <div className="flex items-center justify-between gap-4 mb-8">
-                                <div className="text-center group relative">
-                                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-0.5 rounded-full font-hauora z-10">You</span>
-                                    <div className="w-28 h-36 bg-gray-100 rounded-xl overflow-hidden shadow-sm rotate-[-2deg] group-hover:rotate-0 transition-transform duration-300 relative">
-                                        <Image src="/images/jacket.png" alt="Your Jacket" fill className="object-cover" />
+                                    <div className="space-y-0.5">
+                                        <h4 className="font-hauora font-bold text-[#1A1A1A] text-base md:text-lg leading-none">Alex M.</h4>
+                                        <p className="text-[9px] md:text-[10px] text-emerald-600 font-bold uppercase tracking-[0.1em]">Active in Your Circle</p>
                                     </div>
                                 </div>
-
-                                <div className="flex flex-col items-center gap-2 text-green-500">
-                                    <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center animate-pulse">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                                <div className="text-center group relative">
-                                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-hauora z-10">Alex</span>
-                                    <div className="w-28 h-36 bg-gray-100 rounded-xl overflow-hidden shadow-sm rotate-[2deg] group-hover:rotate-0 transition-transform duration-300 relative">
-                                        <Image src="/images/pants.jpg" alt="Their Item" fill className="object-cover" />
-                                    </div>
+                                <div className="px-2 md:px-3 py-1 bg-emerald-50 text-emerald-600 text-[9px] md:text-[10px] font-bold rounded-full border border-emerald-100 uppercase tracking-widest whitespace-nowrap">
+                                    98% Match
                                 </div>
                             </div>
 
-                            {/* Context */}
-                            <div className="bg-gray-50 rounded-xl p-4 mb-6 border border-gray-100 text-left">
-                                <p className="text-sm text-gray-600 font-hauora leading-relaxed">
-                                    <span className="font-bold text-gray-900">Alex</span> is looking for a <span className="text-gray-900 font-medium">Leather Jacket</span>.
-                                    Your item is a perfect match for their wishlist!
-                                </p>
+                            {/* Swap Visualizer */}
+                            <div className="flex items-center justify-between gap-3 sm:gap-6 mb-10 relative">
+                                {/* Connecting Path (Animated) */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] border-b border-dashed border-emerald-200/50 -z-10" />
+
+                                <div className="text-center space-y-3 group/item">
+                                    <div className="relative w-24 h-32 sm:w-28 sm:h-40 bg-[#F7F6F0] rounded-2xl overflow-hidden shadow-md transition-transform duration-500 group-hover/item:-rotate-3 group-hover/item:scale-105">
+                                        <Image src="/images/jacket.png" alt="Your Item" fill className="object-cover" />
+                                        <span className="absolute bottom-2 left-2 px-2 py-0.5 bg-black/50 backdrop-blur-md text-white text-[7px] md:text-[8px] font-bold uppercase rounded-md tracking-widest">Your Side</span>
+                                    </div>
+                                </div>
+
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/20 z-20 flex-shrink-0"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6 text-white">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                                    </svg>
+                                </motion.div>
+
+                                <div className="text-center space-y-3 group/item">
+                                    <div className="relative w-24 h-32 sm:w-28 sm:h-40 bg-[#F7F6F0] rounded-2xl overflow-hidden shadow-md transition-transform duration-500 group-hover/item:rotate-3 group-hover/item:scale-105">
+                                        <Image src="/images/pants.jpg" alt="Alex's Item" fill className="object-cover" />
+                                        <span className="absolute bottom-2 left-2 px-2 py-0.5 bg-emerald-500 backdrop-blur-md text-white text-[7px] md:text-[8px] font-bold uppercase rounded-md tracking-widest">Alex's Side</span>
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* Action Button */}
-                            <button className="w-full py-3.5 bg-gray-900 text-white rounded-full font-hauora font-medium text-sm hover:bg-black transition-all hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2 group">
-                                <span>Send Swap Request</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 transform group-hover:translate-x-1 transition-transform">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                </svg>
+                            {/* Insight & Action */}
+                            <div className="bg-[#F7FCFB] rounded-2xl p-4 sm:p-5 mb-8 border border-emerald-100 flex items-start gap-3 sm:gap-4">
+                                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 text-emerald-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
+                                        <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 0 1-.984-1.133 4.753 4.753 0 0 1 5.223 0 .75.75 0 0 1-.984 1.133Zm-4.256 4.13a.75.75 0 1 0-1.244 1.25.75.75 0 0 0 1.244-1.25Zm5.5 0a.75.75 0 1 0-1.244 1.25.75.75 0 0 0 1.244-1.25ZM7.5 15.75a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div className="space-y-1">
+                                    <p className="text-[11px] sm:text-xs font-hauora text-[#1A1A1A]/70 leading-relaxed">
+                                        Alex wants your <span className="text-[#1A1A1A] font-bold">Leather Jacket</span>. Swapping this item saves <span className="text-emerald-600 font-bold">15kg of CO<sub>2</sub></span> emissions.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button className="w-full py-3.5 sm:py-4 bg-[#1A1A1A] text-white rounded-2xl font-hauora font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] shadow-2xl transition-all duration-300 hover:bg-emerald-600 hover:scale-[1.02] active:scale-95">
+                                Send Swap Proposal
                             </button>
-                            <p className="text-center text-xs text-gray-400 mt-3 font-hauora">Free shipping included for your first 3 swaps</p>
-                        </div>
+                        </motion.div>
 
-                        {/* Decorative background elements */}
-                        <div className="absolute -top-12 -right-12 w-72 h-72 bg-green-200/30 rounded-full blur-3xl -z-10 animate-pulse" />
-                        <div className="absolute -bottom-12 -left-12 w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl -z-10" />
+                        {/* Background Accents (Blurred Spheres) */}
+                        <div className="absolute -top-10 -right-10 w-48 h-48 bg-emerald-100 rounded-full blur-3xl -z-10 animate-pulse" />
+                        <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-emerald-50 rounded-full blur-3xl -z-10" />
                     </div>
                 </div>
             </div>

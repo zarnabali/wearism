@@ -26,7 +26,6 @@ export default function Home() {
         <Sustainability />
         <WhyDifferent />
         <BrandConnections />
-        <Vision />
         <FAQ />
         <FinalCTA />
       </main>

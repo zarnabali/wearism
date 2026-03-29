@@ -33,7 +33,7 @@ export default function FAQ() {
     ];
 
     return (
-        <section id="faq" className="bg-white py-32 px-6">
+        <section id="faq" className="bg-white py-16 px-6">
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="font-hauora font-light text-4xl lg:text-5xl text-gray-900 mb-6">
@@ -48,7 +48,11 @@ export default function FAQ() {
                     {faqs.map((faq, index) => (
                         <div
                             key={index}
-                            className="bg-white rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md"
+                            className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${
+                                openIndex === index 
+                                    ? 'border-wearism/30 shadow-[0_20px_50px_-12px_rgba(255,80,0,0.15)] ring-1 ring-wearism/5' 
+                                    : 'border-gray-100 shadow-sm hover:shadow-[0_15px_30px_-10px_rgba(255,80,0,0.1)] hover:border-wearism/20'
+                            }`}
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}

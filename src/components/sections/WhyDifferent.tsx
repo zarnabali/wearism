@@ -41,7 +41,7 @@ export default function WhyDifferent() {
     ];
 
     return (
-        <section className="bg-white py-32 px-6">
+        <section className="bg-white py-16 px-6">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-20">
