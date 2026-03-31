@@ -52,25 +52,28 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-[#FBFDFA] py-16 md:py-24 border-t border-gray-100 relative overflow-hidden">
-            {/* Subtle Gradient Detail */}
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-wearism/5 rounded-full blur-[100px] -z-10" />
+        <footer className="bg-black py-16 md:py-24 border-t border-white/5 relative overflow-hidden">
+            {/* Orange Gradient Touch */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-[#050505] to-wearism/10 -z-10" />
+            
+            {/* Vibrant Decorative Corner Glow */}
+            <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-wearism/30 rounded-full blur-[160px] -z-10" />
 
             <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 items-start">
-                    
-                    {/* Brand & Newsletter (Centered on Mobile) */}
-                    <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center sm:items-start text-center sm:text-left space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16 items-start">
+
+                    {/* Brand & Newsletter */}
+                    <div className="sm:col-span-1 lg:col-span-1 flex flex-col items-start space-y-6 md:space-y-8">
                         <Link href="/" className="block">
                             <Image
-                                src="/logo/wearism-b.png"
+                                src="/logo/wearism-w.png"
                                 alt="Wearism"
-                                width={140}
-                                height={28}
-                                className="mb-2"
+                                width={120}
+                                height={24}
+                                className="opacity-90"
                             />
                         </Link>
-                        <p className="font-hauora font-light text-sm text-[#1A1A1A]/50 leading-relaxed max-w-sm">
+                        <p className="font-hauora font-light text-xs md:text-sm text-white/40 leading-relaxed max-w-xs">
                             The intelligent wardrobe ecosystem. Helping you shop less, swap more, and style effortless looks every day.
                         </p>
 
@@ -80,68 +83,70 @@ export default function Footer() {
                                 <input
                                     type="email"
                                     placeholder="your@email.com"
-                                    className="bg-white border border-gray-200 text-[#1A1A1A] text-sm rounded-xl block w-full p-3 placeholder-[#1A1A1A]/20 font-hauora font-light focus:outline-none focus:ring-1 focus:ring-wearism/30 transition-all"
+                                    className="bg-white/5 border border-white/10 text-white text-xs md:text-sm rounded-xl block w-full p-3 md:p-3.5 placeholder-white/20 font-hauora font-light focus:outline-none focus:ring-1 focus:ring-wearism/30 transition-all"
                                 />
-                                <button className="bg-[#1A1A1A] text-white px-4 py-2 rounded-xl transition-all duration-300 hover:bg-wearism">
+                                <button className="bg-white text-black px-4 py-2 rounded-xl transition-all duration-300 hover:bg-wearism hover:text-white">
                                     →
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    {/* Navigation Columns */}
-                    <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-6">
-                        <h3 className="font-hauora font-bold text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]">Product</h3>
-                        <ul className="space-y-4">
-                            {navigation.product.map((item) => (
-                                <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className="font-hauora font-light text-sm text-[#1A1A1A]/60 hover:text-wearism transition-colors duration-300 block"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    {/* Navigation Columns - Professional 2x2 on Mobile */}
+                    <div className="grid grid-cols-2 lg:grid-cols-3 lg:col-span-3 gap-8 md:gap-12 w-full">
+                        <div className="flex flex-col items-start space-y-5 md:space-y-6">
+                            <h3 className="font-hauora font-bold text-[10px] uppercase tracking-[0.2em] text-white/30">Product</h3>
+                            <ul className="space-y-3 md:space-y-4">
+                                {navigation.product.map((item) => (
+                                    <li key={item.name}>
+                                        <Link
+                                            href={item.href}
+                                            className="font-hauora font-light text-xs md:text-sm text-white/50 hover:text-wearism transition-colors duration-300 block"
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                    <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-6">
-                        <h3 className="font-hauora font-bold text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]">Company</h3>
-                        <ul className="space-y-4">
-                            {navigation.company.map((item) => (
-                                <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className="font-hauora font-light text-sm text-[#1A1A1A]/60 hover:text-wearism transition-colors duration-300 block"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                        <div className="flex flex-col items-start space-y-5 md:space-y-6">
+                            <h3 className="font-hauora font-bold text-[10px] uppercase tracking-[0.2em] text-white/30">Company</h3>
+                            <ul className="space-y-3 md:space-y-4">
+                                {navigation.company.map((item) => (
+                                    <li key={item.name}>
+                                        <Link
+                                            href={item.href}
+                                            className="font-hauora font-light text-xs md:text-sm text-white/50 hover:text-wearism transition-colors duration-300 block"
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                    <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-6">
-                        <h3 className="font-hauora font-bold text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]">Connect</h3>
-                        <div className="flex sm:flex-col gap-6 sm:gap-4 flex-wrap justify-center sm:justify-start">
-                            {navigation.social.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    className="font-hauora font-light text-sm text-[#1A1A1A]/60 hover:text-wearism transition-colors duration-300 flex items-center gap-3 group"
-                                >
-                                    <item.icon className="h-4 w-4 opacity-50 group-hover:opacity-100 transition-opacity" />
-                                    <span className="hidden sm:inline">{item.name}</span>
-                                </a>
-                            ))}
+                        <div className="flex flex-col items-start space-y-5 md:space-y-6 col-span-2 lg:col-span-1 mt-4 lg:mt-0">
+                            <h3 className="font-hauora font-bold text-[10px] uppercase tracking-[0.2em] text-white/30">Connect</h3>
+                            <div className="flex gap-6 lg:flex-col lg:gap-4 flex-wrap">
+                                {navigation.social.map((item) => (
+                                    <a
+                                        key={item.name}
+                                        href={item.href}
+                                        className="font-hauora font-light text-xs md:text-sm text-white/50 hover:text-wearism transition-colors duration-300 flex items-center gap-3 group"
+                                    >
+                                        <item.icon className="h-4 w-4 opacity-40 group-hover:opacity-100 transition-opacity" />
+                                        <span className="hidden md:inline lg:inline">{item.name}</span>
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-20 pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <p className="font-hauora font-light text-[10px] text-[#1A1A1A]/40 uppercase tracking-[0.1em]">
+                <div className="mt-16 md:mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <p className="font-hauora font-light text-[10px] text-white/20 uppercase tracking-[0.1em]">
                         © {new Date().getFullYear()} Wearism Inc.
                     </p>
                     <div className="flex gap-8">
@@ -149,7 +154,7 @@ export default function Footer() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="font-hauora font-light text-[10px] text-[#1A1A1A]/40 uppercase tracking-[0.1em] hover:text-wearism transition-colors duration-200"
+                                className="font-hauora font-light text-[10px] text-white/20 uppercase tracking-[0.1em] hover:text-wearism transition-colors duration-200"
                             >
                                 {item.name}
                             </Link>
