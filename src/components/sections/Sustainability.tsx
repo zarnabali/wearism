@@ -128,7 +128,10 @@ export default function Sustainability() {
                                 </div>
                             </div>
 
-                            <button className="w-full py-3.5 sm:py-4 bg-[#1A1A1A] text-white rounded-2xl font-hauora font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] shadow-2xl transition-all duration-300 hover:bg-emerald-600 hover:scale-[1.02] active:scale-95">
+                            <button 
+                                onClick={() => window.location.href = '/contact'}
+                                className="w-full py-3.5 sm:py-4 bg-[#1A1A1A] text-white rounded-2xl font-hauora font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] shadow-2xl transition-all duration-300 hover:bg-emerald-600 hover:scale-[1.02] active:scale-95"
+                            >
                                 Send Swap Proposal
                             </button>
                         </motion.div>

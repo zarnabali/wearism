@@ -66,7 +66,7 @@ export default function HowItWorks() {
     ];
 
     return (
-        <section ref={containerRef} className="relative h-[400vh] bg-white">
+        <section ref={containerRef} id="how-it-works" className="relative h-[400vh] bg-white">
             {/* Header: Now scrolls naturally to free up space for mobile content */}
             <div className="relative max-w-7xl mx-auto w-full px-4 md:px-6 pt-24 pb-12 md:pt-32 md:pb-24 z-10">
                 <div className="text-center">
@@ -108,7 +108,7 @@ export default function HowItWorks() {
                                 </div>
 
                                 {/* Central Story Card (Mobile) */}
-                                <div className="w-full relative h-[420px] sm:h-[480px] md:h-[550px] mb-6 md:mb-8">
+                                <div className="w-full relative h-[500px] sm:h-[550px] md:h-[600px] mb-6 md:mb-8">
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         <div className="w-full max-w-[320px] h-full">
                                             <StepVisual activeStep={activeStep} />
@@ -193,8 +193,8 @@ function StepVisual({ activeStep }: { activeStep: number }) {
                 {activeStep === 0 && (
                     <div className="flex flex-col h-full bg-white rounded-[24px] md:rounded-[32px] shadow-[0_30px_60px_-15px_rgba(255,80,0,0.25),0_15px_40px_-20px_rgba(0,0,0,0.1)] overflow-hidden ring-1 ring-wearism/10">
                         {/* Main Image Area */}
-                        <div className="relative flex-[1.1] bg-[#F7F6F0] group">
-                            <Image src="/images/1.jpeg" alt="Full Outfit" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="relative flex-[1.4] md:flex-[1.1] bg-[#F7F6F0] group min-h-[220px]">
+                            <Image src="/images/1.jpeg" alt="Full Outfit" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
 
                             {/* Scanning Overlay Effect */}
                             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-wearism/10 to-transparent animate-scan" style={{ height: '30%', top: '-30%' }} />
@@ -208,11 +208,11 @@ function StepVisual({ activeStep }: { activeStep: number }) {
                         </div>
 
                         {/* Bottom Sheet Results */}
-                        <div className="bg-white p-4 md:p-6 flex-[1] flex flex-col justify-between">
-                            <div className="flex items-center justify-between mb-4">
+                        <div className="bg-white p-3 md:p-6 flex-1 flex flex-col min-h-0">
+                            <div className="flex items-center justify-between mb-3 md:mb-4">
                                 <div>
-                                    <p className="text-sm font-bold text-[#1A1A1A]">AI Analysis</p>
-                                    <p className="text-[10px] md:text-xs text-[#1A1A1A]/40">4 items detected</p>
+                                    <p className="text-xs md:text-sm font-bold text-[#1A1A1A]">AI Analysis</p>
+                                    <p className="text-[9px] md:text-[10px] text-[#1A1A1A]/40">4 items detected</p>
                                 </div>
                                 <div className="w-8 h-8 rounded-full bg-wearism/10 flex items-center justify-center text-wearism">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -221,20 +221,20 @@ function StepVisual({ activeStep }: { activeStep: number }) {
                                 </div>
                             </div>
 
-                            <div className="space-y-2.5">
+                            <div className="space-y-1.5 md:space-y-2.5 overflow-y-auto">
                                 {[
                                     { name: "Oversized Wool Blazer", tag: "Outerwear", img: "/images/blazers.jpg" },
                                     { name: "Pleated Trousers", tag: "Bottom", img: "/images/trousers.jpg" },
                                     { name: "Heels", tag: "Footwear", img: "/images/heels.jpeg" },
                                     { name: "Silk Tie", tag: "Accessories", img: "/images/tie.jpg" }
                                 ].map((item, idx) => (
-                                    <div key={idx} className="flex items-center gap-3 p-1.5 hover:bg-[#F7F6F0]/40 rounded-lg transition-colors cursor-pointer group">
-                                        <div className="relative w-8 h-8 md:w-10 md:h-10 rounded-md overflow-hidden bg-[#F7F6F0] flex-shrink-0 border border-[#1A1A1A]/5">
+                                    <div key={idx} className="flex items-center gap-2 md:gap-3 p-1 hover:bg-[#F7F6F0]/40 rounded-lg transition-colors cursor-pointer group">
+                                        <div className="relative w-7 h-7 md:w-10 md:h-10 rounded-md overflow-hidden bg-[#F7F6F0] flex-shrink-0 border border-[#1A1A1A]/5">
                                             <Image src={item.img} alt={item.name} fill className="object-cover" />
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <h4 className="text-[10px] md:text-xs font-semibold text-[#1A1A1A] truncate">{item.name}</h4>
-                                            <span className="text-[8px] md:text-[9px] text-[#1A1A1A]/40">{item.tag}</span>
+                                            <h4 className="text-[9px] md:text-xs font-semibold text-[#1A1A1A] truncate">{item.name}</h4>
+                                            <span className="text-[7px] md:text-[9px] text-[#1A1A1A]/40">{item.tag}</span>
                                         </div>
                                     </div>
                                 ))}
@@ -265,7 +265,10 @@ function StepVisual({ activeStep }: { activeStep: number }) {
                                     <span className="absolute bottom-3 left-3 text-[10px] text-white font-medium">Bottom Match</span>
                                 </div>
                             </div>
-                            <button className="w-full bg-[#1A1A1A] text-white py-4 rounded-2xl text-[10px] uppercase tracking-widest font-bold hover:bg-wearism transition-colors shadow-lg shadow-black/10">
+                            <button 
+                                onClick={() => alert('This look has been added to your daily stylist! Wearism will now suggest matching accessories based on your local weather.')}
+                                className="w-full bg-[#1A1A1A] text-white py-4 rounded-2xl text-[10px] uppercase tracking-widest font-bold hover:bg-wearism transition-colors shadow-lg shadow-black/10"
+                            >
                                 Wear this Look
                             </button>
                         </div>
@@ -317,7 +320,10 @@ function StepVisual({ activeStep }: { activeStep: number }) {
                                 </div>
                             </div>
 
-                            <button className="w-full bg-wearism text-white py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-[#1A1A1A] transition-colors shadow-lg shadow-wearism/20">
+                            <button 
+                                onClick={() => window.location.href = '/contact'}
+                                className="w-full bg-wearism text-white py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-[#1A1A1A] transition-colors shadow-lg shadow-wearism/20"
+                            >
                                 Send Proposal
                             </button>
                         </div>

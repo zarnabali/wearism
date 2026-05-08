@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${cabinetGrotesk.variable} ${switzer.variable} ${hauora.variable} ${oswald.variable} antialiased overflow-x-hidden`}
       >

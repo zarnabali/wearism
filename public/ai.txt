@@ -1,0 +1,29 @@
+# Wearism - AI-Powered Personal Stylist & Virtual Wardrobe
+
+## Mission
+Wearism's mission is to revolutionize fashion by helping users rediscover their own clothes, reducing textile waste, and simplifying daily styling through advanced artificial intelligence.
+
+## Core Features
+1. AI Digitization: Automatically tag and organize your closet from photos.
+2. AI Outfit Generation: Get personalized daily outfit recommendations based on your style and the weather.
+3. Smart Swap: A sustainable peer-to-peer logistics system for swapping clothes you no longer wear.
+4. Privacy-First Matching: We protect user data while connecting them with sustainable fashion vendors.
+
+## Technology Stack
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- GSAP & Framer Motion for animations
+- AI-driven image recognition and stylistic matching
+
+## Sustainability Commitment
+Wearism is dedicated to the circular economy. By unlocking the hidden potential of existing wardrobes (the "Closet Paradox"), we help users shop less and wear more.
+
+## Target Audience
+- Fashion enthusiasts looking for styling inspiration.
+- Sustainability-conscious consumers.
+- Busy professionals wanting to reduce decision fatigue.
+
+## Contact
+Email: wearismfashion@gmail.com
+Website: https://wearism.ai

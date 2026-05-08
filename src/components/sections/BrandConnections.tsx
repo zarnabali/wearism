@@ -65,7 +65,10 @@ export default function BrandConnections() {
                         </div>
 
                         <div className="pt-2">
-                            <button className="group relative w-full sm:w-auto px-8 py-4 bg-[#1A1A1A] text-white rounded-2xl overflow-hidden shadow-2xl shadow-black/10 transition-all duration-300 hover:scale-105 active:scale-95">
+                            <button 
+                                onClick={() => window.location.href = '/contact'}
+                                className="group relative w-full sm:w-auto px-8 py-4 bg-[#1A1A1A] text-white rounded-2xl overflow-hidden shadow-2xl shadow-black/10 transition-all duration-300 hover:scale-105 active:scale-95"
+                            >
                                 <span className="relative z-10 font-hauora font-bold text-xs uppercase tracking-[0.2em]">Join the Network</span>
                                 <div className="absolute inset-0 bg-wearism translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
                             </button>
@@ -144,7 +147,10 @@ export default function BrandConnections() {
                                             </p>
                                         </div>
                                     </div>
-                                    <button className="w-full py-2.5 md:py-3 bg-white border border-wearism/20 text-wearism rounded-xl text-[9px] md:text-[10px] font-bold uppercase tracking-widest hover:bg-wearism/5 transition-colors">
+                                    <button 
+                                        onClick={() => window.location.href = '/contact'}
+                                        className="w-full py-2.5 md:py-3 bg-white border border-wearism/20 text-wearism rounded-xl text-[9px] md:text-[10px] font-bold uppercase tracking-widest hover:bg-wearism/5 transition-colors"
+                                    >
                                         View Category Intelligence
                                     </button>
                                 </div>

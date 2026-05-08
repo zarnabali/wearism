@@ -10,29 +10,33 @@ export default function HeroNew() {
     const buttonRef = useRef(null);
 
     useEffect(() => {
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        let ctx = gsap.context(() => {
+            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        tl.from(textRef.current, {
-            y: 50,
-            opacity: 0,
-            duration: 1.2,
-            delay: 0.5,
-        })
-            .from(lineRef.current, {
-                scaleX: 0,
-                transformOrigin: "left",
-                duration: 0.8,
-            }, "-=0.6")
-            .from(subtextRef.current, {
-                y: 20,
+            tl.from(textRef.current, {
+                y: 50,
                 opacity: 0,
-                duration: 0.8,
-            }, "-=0.4")
-            .from(buttonRef.current, {
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-            }, "-=0.3");
+                duration: 1.2,
+                delay: 0.5,
+            })
+                .from(lineRef.current, {
+                    scaleX: 0,
+                    transformOrigin: "left",
+                    duration: 0.8,
+                }, "-=0.6")
+                .from(subtextRef.current, {
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.8,
+                }, "-=0.4")
+                .from(buttonRef.current, {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                }, "-=0.3");
+        });
+
+        return () => ctx.revert();
     }, []);
 
     return (
@@ -82,6 +86,7 @@ export default function HeroNew() {
                     {/* Buttons */}
                     <div ref={buttonRef} className="flex flex-col sm:flex-row gap-4">
                         <button
+                            onClick={() => window.location.href = '/contact'}
                             className="group relative bg-wearism text-white font-hauora font-medium text-base px-10 py-4 rounded-full transition-all duration-300 overflow-hidden"
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.backgroundColor = 'white';
@@ -95,6 +100,7 @@ export default function HeroNew() {
                             Get Started
                         </button>
                         <button
+                            onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
                             className="group relative bg-white/10 backdrop-blur-md text-white border border-white/30 font-hauora font-medium text-base px-10 py-4 rounded-full transition-all duration-300"
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.backgroundColor = 'white';

@@ -40,6 +40,7 @@ export default function FinalCTA() {
                     className="flex flex-col items-center"
                 >
                     <button
+                        onClick={() => window.location.href = '/contact'}
                         className="group relative bg-white text-black font-hauora font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] px-10 py-4 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 mb-8"
                     >
                         <span className="relative z-10">Request Early Access</span>
