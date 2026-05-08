@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local data
+submissions.xlsx
+temp_key.txt
+*.json
+!package.json
+!tsconfig.json
+!package-lock.json
