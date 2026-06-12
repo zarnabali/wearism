@@ -40,9 +40,9 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                     <Image
                         src="/logo/wearism-short-w.png"
                         alt="Wearism"
-                        width={160}
-                        height={32}
-                        className="h-8 md:h-10 w-auto"
+                        width={300}
+                        height={72}
+                        className="h-14 md:h-16 w-auto"
                     />
                 </Link>
 
