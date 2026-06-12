@@ -1,15 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Header({ forceBlack = false }: { forceBlack?: boolean }) {
     const [isScrolled, setIsScrolled] = useState(false);
+    // Ref always holds the latest value so mouse event handlers never read stale closures
+    const isScrolledRef = useRef(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            const scrolled = window.scrollY > 50;
+            isScrolledRef.current = scrolled;
+            setIsScrolled(scrolled);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -56,7 +60,7 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                                 e.currentTarget.style.color = '#FF6B35';
                             }}
                             onMouseLeave={(e) => {
-                                e.currentTarget.style.color = (isScrolled || forceBlack) ? 'black' : 'white';
+                                e.currentTarget.style.color = (isScrolledRef.current || forceBlack) ? 'black' : 'white';
                             }}
                         >
                             {item.name}
@@ -77,7 +81,7 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                         e.currentTarget.style.color = 'black';
                     }}
                     onMouseLeave={(e) => {
-                        if (isScrolled || forceBlack) {
+                        if (isScrolledRef.current || forceBlack) {
                             e.currentTarget.style.backgroundColor = '#FF6B35';
                             e.currentTarget.style.color = 'white';
                         } else {
