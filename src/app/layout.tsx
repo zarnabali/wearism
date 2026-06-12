@@ -4,10 +4,10 @@ import "./globals.css";
 import { cabinetGrotesk, switzer, hauora, oswald } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "Wearism Website",
+  title: "Wearism ",
   description: "Wearism - Setup with Next.js",
   icons: {
-    icon: '/logo/logo.jpeg'
+    icon: '/logo/wearism-short-w.png'
   }
 };
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" type="image/jpeg" href="/logo/logo.jpeg" />
+        <link rel="icon" className="bg-transparent" type="image/png" />
       </head>
       <body
         className={`${cabinetGrotesk.variable} ${switzer.variable} ${hauora.variable} ${oswald.variable} antialiased overflow-x-hidden`}

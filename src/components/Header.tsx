@@ -34,6 +34,11 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                 : "bg-white/10 backdrop-blur-md border border-white/20"
                 }`}
         >
+            <style>{`
+                .nav-hover:hover { color: #FF6B35 !important; }
+                .btn-hover-scrolled:hover { background-color: white !important; color: #FF6B35 !important; border-color: #FF6B35 !important; }
+                .btn-hover-transparent:hover { background-color: #FF6B35 !important; color: white !important; border-color: transparent !important; }
+            `}</style>
             <nav className="flex items-center justify-between px-4 md:px-8 py-3 md:py-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
@@ -52,7 +57,7 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                         <Link
                             key={item.name}
                             href={item.href}
-                            className={`font-hauora font-medium transition-colors duration-300 hover:text-[#FF6B35] ${isScrolled || forceBlack
+                            className={`nav-hover font-hauora font-medium transition-colors duration-300 ${isScrolled || forceBlack
                                 ? "text-black"
                                 : "text-white"
                                 }`}
@@ -65,9 +70,9 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                 {/* CTA Button */}
                 <Link
                     href="/contact"
-                    className={`font-hauora font-medium md:font-semibold text-sm md:text-base px-4 py-2 md:px-6 md:py-2.5 rounded-full transition-all duration-300 inline-block ${isScrolled || forceBlack
-                        ? 'bg-[#FF6B35] text-white hover:bg-white hover:text-black'
-                        : 'bg-white text-[#111827] hover:bg-white/90 hover:text-black'
+                    className={`font-hauora font-medium md:font-semibold text-sm md:text-base px-4 py-2 md:px-6 md:py-2.5 rounded-full transition-all duration-300 inline-block border border-transparent ${isScrolled || forceBlack
+                        ? 'btn-hover-scrolled bg-[#FF6B35] text-white'
+                        : 'btn-hover-transparent bg-white text-black'
                     }`}
                 >
                     Get Started

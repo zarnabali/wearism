@@ -53,6 +53,9 @@ export default function Footer() {
 
     return (
         <footer className="bg-black py-16 md:py-24 border-t border-white/5 relative overflow-hidden">
+            <style>{`
+                .footer-link-hover:hover, .footer-link-hover:hover * { color: #FF6B35 !important; opacity: 1 !important; }
+            `}</style>
             {/* Orange Gradient Touch */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-[#050505] to-wearism/10 -z-10" />
             
@@ -104,7 +107,7 @@ export default function Footer() {
                                     <li key={item.name}>
                                         <Link
                                             href={item.href}
-                                            className="font-hauora font-light text-xs md:text-sm text-white/50 hover:text-white hover:-translate-y-0.5 transition-all duration-300 block origin-left"
+                                            className="footer-link-hover font-hauora font-light text-xs md:text-sm text-white hover:-translate-y-0.5 transition-all duration-300 block origin-left"
                                         >
                                             {item.name}
                                         </Link>
@@ -120,7 +123,7 @@ export default function Footer() {
                                     <li key={item.name}>
                                         <Link
                                             href={item.href}
-                                            className="font-hauora font-light text-xs md:text-sm text-white/50 hover:text-white hover:-translate-y-0.5 transition-all duration-300 block origin-left"
+                                            className="footer-link-hover font-hauora font-light text-xs md:text-sm text-white hover:-translate-y-0.5 transition-all duration-300 block origin-left"
                                         >
                                             {item.name}
                                         </Link>
@@ -138,9 +141,9 @@ export default function Footer() {
                                         href={item.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="font-hauora font-light text-xs md:text-sm text-white/50 hover:text-white hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 group"
+                                        className="footer-link-hover font-hauora font-light text-xs md:text-sm text-white hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 group"
                                     >
-                                        <item.icon className="h-4 w-4 opacity-40 group-hover:opacity-100 group-hover:text-white transition-all duration-300" />
+                                        <item.icon className="h-4 w-4 transition-all duration-300" />
                                         <span className="hidden md:inline lg:inline">{item.name}</span>
                                     </a>
                                 ))}
@@ -159,7 +162,7 @@ export default function Footer() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="font-hauora font-light text-[10px] text-white/20 uppercase tracking-[0.1em] hover:text-white hover:-translate-y-0.5 transition-all duration-200"
+                                className="footer-link-hover font-hauora font-light text-[10px] text-white uppercase tracking-[0.1em] hover:-translate-y-0.5 transition-all duration-200"
                             >
                                 {item.name}
                             </Link>
