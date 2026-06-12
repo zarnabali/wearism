@@ -38,7 +38,7 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
                     <Image
-                        src={isScrolled || forceBlack ? "/logo/wearism.png" : "/logo/wearism-w.png"}
+                        src="/logo/wearism-short-w.png"
                         alt="Wearism"
                         width={160}
                         height={32}
@@ -52,16 +52,10 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                         <Link
                             key={item.name}
                             href={item.href}
-                            className={`font-hauora font-medium transition-colors duration-300 ${isScrolled || forceBlack
+                            className={`font-hauora font-medium transition-colors duration-300 hover:text-[#FF6B35] ${isScrolled || forceBlack
                                 ? "text-black"
                                 : "text-white"
                                 }`}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.color = '#FF6B35';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.color = (isScrolledRef.current || forceBlack) ? 'black' : 'white';
-                            }}
                         >
                             {item.name}
                         </Link>
@@ -71,24 +65,10 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                 {/* CTA Button */}
                 <Link
                     href="/contact"
-                    className="font-hauora font-medium md:font-semibold text-sm md:text-base px-4 py-2 md:px-6 md:py-2.5 rounded-full transition-all duration-300 inline-block"
-                    style={{
-                        backgroundColor: (isScrolled || forceBlack) ? '#FF6B35' : 'white',
-                        color: (isScrolled || forceBlack) ? 'white' : '#111827'
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = 'white';
-                        e.currentTarget.style.color = 'black';
-                    }}
-                    onMouseLeave={(e) => {
-                        if (isScrolledRef.current || forceBlack) {
-                            e.currentTarget.style.backgroundColor = '#FF6B35';
-                            e.currentTarget.style.color = 'white';
-                        } else {
-                            e.currentTarget.style.backgroundColor = 'white';
-                            e.currentTarget.style.color = '#111827';
-                        }
-                    }}
+                    className={`font-hauora font-medium md:font-semibold text-sm md:text-base px-4 py-2 md:px-6 md:py-2.5 rounded-full transition-all duration-300 inline-block ${isScrolled || forceBlack
+                        ? 'bg-[#FF6B35] text-white hover:bg-white hover:text-black'
+                        : 'bg-white text-[#111827] hover:bg-white/90 hover:text-black'
+                    }`}
                 >
                     Get Started
                 </Link>
