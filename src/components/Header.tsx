@@ -38,11 +38,11 @@ export default function Header({ forceBlack = false }: { forceBlack?: boolean })
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
                     <Image
-                        src="/logo/wearism-short-w.png"
+                        src={isScrolled || forceBlack ? "/logo/wearism.png" : "/logo/wearism-w.png"}
                         alt="Wearism"
-                        width={300}
-                        height={72}
-                        className="h-14 md:h-16 w-auto"
+                        width={280}
+                        height={64}
+                        className="h-12 md:h-14 w-auto"
                     />
                 </Link>
 
