@@ -1,15 +1,14 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import HeroNew from "@/components/sections/HeroNew";
-import SocialProof from "@/components/sections/SocialProof";
+import Hero from "@/components/sections/Hero";
+import Capabilities from "@/components/sections/Capabilities";
+import Community from "@/components/sections/Community";
 import Problem from "@/components/sections/Problem";
+import Wardrobe from "@/components/sections/Wardrobe";
+import Swap from "@/components/sections/Swap";
+import AppShowcase from "@/components/sections/AppShowcase";
 import HowItWorks from "@/components/sections/HowItWorks";
-import MagicMoment from "@/components/sections/MagicMoment";
-import WhyDifferent from "@/components/sections/WhyDifferent";
-import Sustainability from "@/components/sections/Sustainability";
-import BrandConnections from "@/components/sections/BrandConnections";
-import Vision from "@/components/sections/Vision";
-import Founder from "@/components/sections/Founder";
+import Audiences from "@/components/sections/Audiences";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 
@@ -17,15 +16,18 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen">
-        <HeroNew />
-        <SocialProof />
+      <main id="main">
+        <Hero />
+        {/* lead with the community — that's what the product actually is */}
+        <Community />
         <Problem />
+        <Wardrobe />
+        <Swap />
+        {/* capability summary lands here, as the lead-in to seeing the app */}
+        <Capabilities />
+        <AppShowcase />
         <HowItWorks />
-        <MagicMoment />
-        <Sustainability />
-        <WhyDifferent />
-        <BrandConnections />
+        <Audiences />
         <FAQ />
         <FinalCTA />
       </main>

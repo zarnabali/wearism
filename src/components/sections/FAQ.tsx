@@ -1,83 +1,102 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { SectionHead } from "@/components/ui/Section";
+import { Reveal } from "@/components/ui/Reveal";
+
+const FAQS = [
+    {
+        q: "Do I have to photograph everything I own?",
+        a: "No — that's the barrier that kills every other wardrobe app. Post a normal outfit photo and the AI separates each garment out of it. You can also bulk-upload a batch, or connect Instagram and let it read your existing posts to build the wardrobe backwards.",
+    },
+    {
+        q: "What's free and what costs money?",
+        a: "The core loop is free: digitising your wardrobe, daily outfit suggestions, and the community. Premium is $1.79 a month for unlimited AI recommendations, occasion and weather styling, wardrobe analytics, the planner and private circles.",
+    },
+    {
+        q: "How does swapping actually work?",
+        a: "You browse wardrobes inside your circle, propose a trade, and both sides confirm. Shipping is self-arranged for now with mandatory tracking numbers shared in-app, photo confirmation on receipt, and a trust score on every account. Swaps can be temporary loans or permanent.",
+    },
+    {
+        q: "Is my wardrobe data sold to brands?",
+        a: "No. Brands never see your photos, your identity or your raw wardrobe. They see aggregated, anonymised gap data — that a few thousand closets in a region are missing lightweight tailoring, for instance. Matching happens on our side. Image uploads are opt-in and encrypted.",
+    },
+    {
+        q: "How accurate is the AI, honestly?",
+        a: "Age estimation classifies to about 85% accuracy on range, and clothing classification covers 50+ categories trained on DeepFashion. It isn't perfect — you can correct any tag by hand, and low-confidence predictions get flagged rather than presented as fact.",
+    },
+    {
+        q: "Can I use it without the social side?",
+        a: "Yes. Plenty of people will only ever want the digital closet and the daily stylist. Circles, feeds and swapping are all opt-in, and the app is useful on day one with an audience of exactly one.",
+    },
+    {
+        q: "I run a brand. What do I get?",
+        a: "A demand dashboard of live wardrobe gaps, promoted placements inside outfit recommendations rather than beside them, return-risk scoring before you spend, and conversion analytics. Onboarding is a one-time $179 fee and we take 5% on attributed sales.",
+    },
+];
 
 export default function FAQ() {
-    const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-    const faqs = [
-        {
-            question: "How does the 'Smart Swap' logistics work?",
-            answer: "Currently, we offer a self-shipping model where users share tracking IDs directly in the app. We verify every tracking number. In the future, we'll integrate directly with couriers like DHL to provide prepaid shipping labels for a seamless experience."
-        },
-        {
-            question: "Is my wardrobe data shared with brands?",
-            answer: "No. Your privacy is our top priority. We use a 'privacy-first' matching system. Vendors never see your raw data or photos. Our AI matches their offers to your specific wardrobe gaps (e.g., 'missing a black smart jacket') anonymously."
-        },
-        {
-            question: "What features are free vs. premium?",
-            answer: "The core experience—digitizing your closet, basic AI outfit generation, and up to 5 swaps per month—is completely free. Our Premium plan (€4.99/mo) unlocks unlimited swaps, advanced weather-based styling, and exclusive vendor deals."
-        },
-        {
-            question: "How accurate is the AI digitization?",
-            answer: "Very accurate! Our AI is trained on diverse datasets to recognize fabrics, cuts, and colors in various lighting conditions. It automatically tags your items so you don't have to enter data manually. You can always make manual edits if needed."
-        },
-        {
-            question: "How do you prevent fraud in swapping?",
-            answer: "We have a strict 3-layer security process: 1) Mandatory tracking number verification. 2) Photo confirmation upon receipt. 3) A user trust/rating score system. We also hold deposits for high-value items until the swap is successfully completed."
-        },
-        {
-            question: "Can I use this just for organizing without swapping?",
-            answer: "Absolutely. Many users use Wearism solely as a digital wardrobe organizer and AI stylist to plan their daily outfits and track what they wear (and what they don't)."
-        }
-    ];
+    const [open, setOpen] = useState<number | null>(0);
 
     return (
-        <section id="faq" className="bg-white py-16 px-6">
-            <div className="max-w-3xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="font-hauora font-light text-4xl lg:text-5xl text-gray-900 mb-6">
-                        Frequently Asked Questions
-                    </h2>
-                    <p className="font-hauora font-light text-xl text-gray-600">
-                        Transparency is key. Here's how we protect your data and your wardrobe.
-                    </p>
-                </div>
+        <section id="faq" className="section bg-bg-2">
+            <div className="shell">
+                <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+                    <div className="lg:sticky lg:top-28 lg:self-start">
+                        <SectionHead
+                            tag="FAQ"
+                            line1="Real answers."
+                            line2="Not AI ones."
+                            action={
+                                <Link href="/contact" className="btn btn-outline">
+                                    Ask us something else
+                                </Link>
+                            }
+                        />
+                    </div>
 
-                <div className="space-y-4">
-                    {faqs.map((faq, index) => (
-                        <div
-                            key={index}
-                            className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${
-                                openIndex === index 
-                                    ? 'border-wearism/30 shadow-[0_20px_50px_-12px_rgba(255,80,0,0.15)] ring-1 ring-wearism/5' 
-                                    : 'border-gray-100 shadow-sm hover:shadow-[0_15px_30px_-10px_rgba(255,80,0,0.1)] hover:border-wearism/20'
-                            }`}
-                        >
-                            <button
-                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full flex items-center justify-between p-6 text-left"
-                            >
-                                <span className="font-hauora font-medium text-lg text-gray-900">
-                                    {faq.question}
-                                </span>
-                                <span className={`transform transition-transform duration-300 text-wearism ${openIndex === index ? 'rotate-180' : ''}`}>
-                                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </span>
-                            </button>
-
-                            <div
-                                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
-                                    }`}
-                            >
-                                <div className="p-6 pt-0 font-hauora font-light text-gray-600 leading-relaxed">
-                                    {faq.answer}
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                    <Reveal delay={0.08}>
+                        <dl>
+                            {FAQS.map((f, i) => {
+                                const isOpen = open === i;
+                                return (
+                                    <div key={f.q} className="border-b border-line first:border-t">
+                                        <dt>
+                                            <button
+                                                type="button"
+                                                onClick={() => setOpen(isOpen ? null : i)}
+                                                aria-expanded={isOpen}
+                                                aria-controls={`faq-a-${i}`}
+                                                className="group flex w-full items-start gap-6 py-6 text-left"
+                                            >
+                                                <span className="flex-1 text-[1.0625rem] font-medium leading-snug tracking-[-0.018em] text-ink md:text-[1.25rem]">
+                                                    {f.q}
+                                                </span>
+                                                <span
+                                                    aria-hidden
+                                                    className={`relative mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full transition-all duration-400 ${isOpen ? "rotate-45 bg-accent text-white" : "bg-white text-ink"
+                                                        }`}
+                                                >
+                                                    <span className="absolute h-[10px] w-px bg-current" />
+                                                    <span className="absolute h-px w-[10px] bg-current" />
+                                                </span>
+                                            </button>
+                                        </dt>
+                                        <dd
+                                            id={`faq-a-${i}`}
+                                            className={`grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                                                }`}
+                                        >
+                                            <div className="overflow-hidden">
+                                                <p className="t-body-sm max-w-2xl pb-6 pr-12">{f.a}</p>
+                                            </div>
+                                        </dd>
+                                    </div>
+                                );
+                            })}
+                        </dl>
+                    </Reveal>
                 </div>
             </div>
         </section>

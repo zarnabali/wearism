@@ -1,62 +1,557 @@
 @import "tailwindcss";
 
+/* ============================================================
+   WEARISM — design system
+   Token values mirror fourmula.ai: near-black #020108, greys derived
+   by opacity rather than separate hues, hairline #D7D7D6, SF Pro
+   Display at 400/500 only, display leading 0.9 with tight tracking.
+   ============================================================ */
+
 :root {
-  /* Wearism Brand Colors */
-  --wearism-orange: #FF6B35;
-  --wearism-orange-dark: #E5582A;
-  --wearism-orange-light: #FF8A5C;
+  /* --- Ink & greys (opacity-derived, exactly like the reference) --- */
+  --ink: #020108;
+  --ink-64: #020108a3;
+  --ink-50: #02010880;
+  --ink-30: #0201084d;
+  --ink-20: #02010833;
+  --ink-10: #0201081a;
 
-  /* Light Theme */
-  --background-light: #FAFAFA;
-  --foreground-light: #171717;
-  --surface-light: #FFFFFF;
-  --border-light: #E5E5E5;
+  /* --- Surfaces --- */
+  --bg: #ffffff;
+  --bg-2: #f7f7f7;
+  --bg-3: #f0f0ef;
+  --line: #d7d7d6;
+  --line-soft: #e8e8e7;
 
-  /* Dark Theme */
-  --background-dark: #0A0A0A;
-  --foreground-dark: #EDEDED;
-  --surface-dark: #1A1A1A;
-  --border-dark: #2A2A2A;
+  /* --- Dark surfaces --- */
+  --dark: #020108;
+  --dark-2: #111111;
+  --dark-line: #2a2a30;
 
-  /* Default to light */
-  --background: var(--background-light);
-  --foreground: var(--foreground-light);
-  --surface: var(--surface-light);
-  --border: var(--border-light);
+  /* --- Brand orange, and the gradient family built from it --- */
+  --accent: #ff6b35;
+  --accent-dark: #e5582a;
+  --accent-deep: #f94a00;
+  --accent-light: #ff9d5c;
+  --accent-tint: #fff1eb;
+  --accent-tint-2: #ffe3d5;
+
+  /* Every card gradient resolves into brand orange, the way the reference's
+     four feature cards all land on the same warm tone. */
+  --grad-accent: linear-gradient(180deg, var(--accent-deep), var(--accent-light));
+  --grad-accent-diag: linear-gradient(135deg, #f94a00 0%, #ff6b35 46%, #ffa06a 100%);
+  --grad-1: linear-gradient(180deg, #f94a00, #ff9d5c);
+  --grad-2: linear-gradient(180deg, #8a1f00, #ff6b35);
+  --grad-3: linear-gradient(180deg, #020108, #f94a00);
+  --grad-4: linear-gradient(180deg, #c2410c, #ffb27a);
+
+  /* --- Motion --- */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Layout --- */
+  --gutter: 1.25rem;
+  --shell: 82rem;
+  --header-h: 4.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2.5rem;
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --color-border: var(--border);
-  --color-wearism: var(--wearism-orange);
-  --color-wearism-dark: var(--wearism-orange-dark);
-  --color-wearism-light: var(--wearism-orange-light);
-  --font-cabinet: var(--font-cabinet);
-  --font-switzer: var(--font-switzer);
-  --font-hauora: var(--font-hauora);
-  --font-oswald: var(--font-oswald);
+  --color-ink: var(--ink);
+  --color-ink-64: var(--ink-64);
+  --color-ink-50: var(--ink-50);
+  --color-ink-30: var(--ink-30);
+  --color-ink-20: var(--ink-20);
+  --color-ink-10: var(--ink-10);
+
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+
+  --color-dark: var(--dark);
+  --color-dark-2: var(--dark-2);
+  --color-dark-line: var(--dark-line);
+
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-light: var(--accent-light);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-tint-2: var(--accent-tint-2);
+
+  --font-sf: var(--font-sf);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-hauora), system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sf), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  /* `clip` — not `hidden`. overflow:hidden here would make <body> a scroll
+     container and silently break every position:sticky descendant, including
+     the stacked cards. `clip` contains overflow without that side effect. */
+  overflow-x: clip;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+::selection {
+  background: var(--ink);
+  color: #fff;
 }
 
-/* Section backgrounds */
-.section-light {
-  background: var(--background-light);
-  color: var(--foreground-light);
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-.section-dark {
-  background: var(--background-dark);
-  color: var(--foreground-dark);
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+section[id],
+main[id] {
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+}
+
+/* ============================================================
+   TYPE SCALE — sizes taken from the reference's --_fonts--- tokens
+   ============================================================ */
+
+/* Headings run at regular (400). At these sizes weight would only add noise —
+   the scale and the tight tracking carry the hierarchy instead. */
+.t-h1 {
+  font-size: clamp(3rem, 7.6vw, 6.75rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.t-h2 {
+  font-size: clamp(2.625rem, 6.4vw, 5.25rem);
+  line-height: 0.93;
+  letter-spacing: -0.034em;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.t-h3 {
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.032em;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.t-h4 {
+  font-size: clamp(1.5rem, 2.4vw, 2.375rem);
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  font-weight: 400;
+}
+
+/* The signature move: line one at full ink, line two dropped to 50%. */
+.t-mute {
+  color: var(--ink-30);
+}
+
+.t-body {
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  letter-spacing: -0.013em;
+  color: var(--ink-64);
+  text-wrap: pretty;
+}
+
+.t-body-sm {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  color: var(--ink-64);
+  text-wrap: pretty;
+}
+
+/* Small caps-ish label above each section headline — the one place orange
+   appears as text in every section, so the accent reads as systematic. */
+.t-tag {
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  letter-spacing: -0.008em;
+  font-weight: 500;
+}
+
+.t-accent {
+  color: var(--accent);
+}
+
+.t-grad {
+  background: var(--grad-accent-diag);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.t-label {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.t-num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 9vw, 8.5rem);
+}
+
+.section-sm {
+  padding-block: clamp(3rem, 5vw, 5rem);
+}
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+
+/* Primary action is the brand gradient — the accent's loudest appearance. */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.25rem;
+  padding-inline: 1.625rem;
+  border-radius: 999px;
+  background-image: var(--grad-accent-diag);
+  background-size: 160% 160%;
+  background-position: 0% 50%;
+  color: #fff;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-position 0.55s var(--ease), box-shadow 0.35s var(--ease),
+    color 0.3s var(--ease), background-color 0.3s var(--ease);
+}
+
+.btn:hover {
+  background-position: 100% 50%;
+  box-shadow: 0 10px 30px -12px rgba(249, 74, 0, 0.55);
+}
+
+/* Neutral variant for places where a second gradient would be too much. */
+.btn-ink {
+  background-image: none;
+  background-color: var(--ink);
+}
+
+.btn-ink:hover {
+  background-color: var(--accent);
+  box-shadow: none;
+}
+
+.btn-sm {
+  height: 2.5rem;
+  padding-inline: 1.125rem;
+  font-size: 0.9375rem;
+}
+
+.btn-light {
+  background-image: none;
+  background-color: #fff;
+  color: var(--ink);
+}
+
+.btn-light:hover {
+  background-image: var(--grad-accent-diag);
+  color: #fff;
+}
+
+.btn-outline {
+  background-image: none;
+  background-color: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.btn-outline:hover {
+  background-image: none;
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn-glass {
+  background-image: none;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.btn-glass:hover {
+  background-image: none;
+  background-color: #fff;
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.card {
+  background: var(--bg-2);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  height: 2.125rem;
+  padding-inline: 0.8125rem;
+  border-radius: 999px;
+  background: var(--accent-tint);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.008em;
+  color: var(--accent-dark);
+}
+
+/* Small orange dot used before section tags */
+.tag-dot {
+  display: inline-block;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 0.5625rem;
+  vertical-align: 0.08em;
+}
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   STACKED CARDS
+   Each card sticks at the top and the next one slides over it. Pure
+   position:sticky — no scroll hijacking, and it works with Lenis.
+   ============================================================ */
+
+.stack {
+  position: relative;
+}
+
+/* Full-bleed, square-cornered, viewport-height panels. Each sticks at the top
+   and the next slides up and closes over it — no inset, no visible stacked
+   edges; the "closing tab" read comes from full coverage. */
+.stack-card {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Each panel resolves into brand orange, as the reference's four do. */
+.stack-1 { background-image: linear-gradient(180deg, #f94a00 0%, #ff8f4a 100%); }
+.stack-2 { background-image: linear-gradient(180deg, #4a90b8 0%, #ff8134 100%); }
+.stack-3 { background-image: linear-gradient(180deg, #5b4bd6 0%, #ff7a3c 100%); }
+.stack-4 { background-image: linear-gradient(180deg, #8a1f00 0%, #fd7b03 100%); }
+
+/* ============================================================
+   DOTS FIELD
+   A real grid of dot elements (same construction as the reference),
+   which is what lets individual dots light up near the cursor.
+   ============================================================ */
+
+.dots-field {
+  display: grid;
+  pointer-events: none;
+  --dot-size: 0.5rem;
+  --dot-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, var(--dot-size));
+  column-gap: var(--dot-gap);
+  row-gap: var(--dot-gap);
+  /* Fill from the top and centre the sub-cell remainder, so a full-bleed
+     field reads as an even lattice rather than drifting to one edge. */
+  align-content: start;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .dots-field {
+    --dot-size: 0.75rem;
+    --dot-gap: 0.75rem;
+  }
+}
+
+.dot {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.12;
+  will-change: opacity, transform;
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out, background-color 0.45s ease-out;
+}
+
+/* ============================================================
+   DEVICE — used in a single section only
+   ============================================================ */
+
+.phone {
+  position: relative;
+  border-radius: 2.5rem;
+  background: #0a0a0c;
+  padding: 0.4375rem;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.28),
+    0 30px 60px -30px rgba(2, 1, 8, 0.5);
+}
+
+.phone-screen {
+  position: relative;
+  border-radius: 2.125rem;
+  overflow: hidden;
+  background: var(--bg);
+  aspect-ratio: 9 / 19.5;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0.55rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32%;
+  height: 1.375rem;
+  border-radius: 999px;
+  background: #0a0a0c;
+  z-index: 30;
+}
+
+/* ============================================================
+   MOTION
+   ============================================================ */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Vertical ticker — the capability list that scrolls past a fixed label */
+@keyframes marquee-y {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+.animate-marquee-y {
+  animation: marquee-y var(--marquee-duration, 26s) linear infinite;
+}
+
+.marquee-host:hover .animate-marquee-y {
+  animation-play-state: paused;
+}
+
+/* Falloff at both ends, which is what produces the black → grey → pale read */
+.fade-y {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 26%,
+    #000 46%,
+    rgba(0, 0, 0, 0.35) 72%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 26%,
+    #000 46%,
+    rgba(0, 0, 0, 0.35) 72%,
+    transparent 100%
+  );
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 48s) linear infinite;
+}
+
+.marquee-host:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+.fade-x {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+
+.no-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-bar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee { animation: none !important; }
 }

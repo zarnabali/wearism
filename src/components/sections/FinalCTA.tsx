@@ -1,63 +1,53 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
 
 export default function FinalCTA() {
     return (
-        <section id="final-cta" className="relative bg-black py-16 md:py-24 px-6 overflow-hidden">
-            {/* Prominent Orange Gradient Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black via-[#050505] to-wearism/25 -z-10" />
-            
-            {/* Vibrant Decorative Corner Glow */}
-            <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-wearism/40 rounded-full blur-[140px] -z-10" />
+        <section id="waitlist" className="relative isolate overflow-hidden bg-dark">
+            <Image
+                src="/images/fewer-clothes.jpg"
+                alt=""
+                fill
+                sizes="100vw"
+                className="-z-20 object-cover opacity-30"
+            />
+            <div
+                aria-hidden
+                className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(2,1,8,0.82),rgba(2,1,8,0.92))]"
+            />
 
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="font-hauora font-light text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-[1.1] tracking-tight"
-                >
-                    Ready to transform <br className="hidden md:block" />
-                    your <span className="text-wearism font-medium italic">wardrobe?</span>
-                </motion.h2>
+            <div className="shell section relative z-10 text-center">
+                <Reveal>
+                    <p className="t-tag text-white/45">Waitlist open · Launching in United States first</p>
+                </Reveal>
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="font-hauora font-light text-lg md:text-xl text-white/40 mb-10 max-w-2xl mx-auto leading-relaxed"
-                >
-                    Join early adopters who are rediscovering their style with AI-powered outfit suggestions.
-                </motion.p>
+                <Reveal delay={0.06}>
+                    <h2 className="t-h1 mx-auto mt-6 max-w-[16ch] text-white">
+                        <span className="block">Open your closet.</span>
+                        <span className="t-grad block">Not your wallet.</span>
+                    </h2>
+                </Reveal>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="flex flex-col items-center"
-                >
-                    <button
-                        onClick={() => window.location.href = '/contact'}
-                        className="group relative bg-white text-black font-hauora font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] px-10 py-4 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 mb-8"
-                    >
-                        <span className="relative z-10">Request Early Access</span>
-                        <div className="absolute inset-0 bg-wearism translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
-                    </button>
+                <Reveal delay={0.12}>
+                    <p className="t-body mx-auto mt-7 max-w-lg !text-white/55">
+                        Get early access when the beta opens, or talk to us about launching as a vendor
+                        or licensing the engine.
+                    </p>
+                </Reveal>
 
-                    <div className="flex items-center gap-4">
-                        <div className="flex -space-x-2">
-                            {[1, 2, 3].map((i) => (
-                                <div key={i} className="w-6 h-6 rounded-full border border-black bg-gray-800 overflow-hidden" />
-                            ))}
-                        </div>
-                        <p className="font-hauora font-medium text-[10px] text-white/30 uppercase tracking-[0.1em]">
-                            Join <span className="text-white">100+</span> on the waitlist
-                        </p>
+                <Reveal delay={0.18}>
+                    <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                        <Link href="/contact" className="btn btn-light">
+                            Join the waitlist
+                        </Link>
+                        <Link href="/contact" className="btn btn-glass">
+                            Partner or license
+                        </Link>
                     </div>
-                </motion.div>
+                </Reveal>
             </div>
         </section>
     );
